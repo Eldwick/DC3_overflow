@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
       self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
     end
   end
+
+  def questions_asked
+    Question.where(user_id:id).count
+  end
+
+  def answers_given
+    Answer.where(user_id:id).count
+  end
 end

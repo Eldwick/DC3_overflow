@@ -1,5 +1,3 @@
-  <%= @user_id %>
-
 <section id="whiteboard_pic">
   Picture of the Day
 </section>
@@ -23,10 +21,12 @@
         </tr>
       </thead>
       <tbody>
+        <% @categories.each do |category|%>
         <tr>
-          <td>Test Category</td>
-          <td class='category_count'>4</td>
+          <td><%= category.name %></td>
+          <td class='category_count'><%= category.questions.length %></td>
         </tr>
+        <% end %>
       </tbody>
     </table>
 
@@ -60,8 +60,8 @@
         <% @users.each do |user| %>
         <tr>
           <td> <%= link_to user.name , user %> </td>
-          <td class='user_question_count'><%= [3,4,5,6,8,9,10].sample %></td>
-          <td class='user_answer_count'><%= [3,4,5,6,8,9,10].sample %></td>
+          <td class='user_question_count'><%= user.questions_asked %></td>
+          <td class='user_answer_count'><%=  user.answers_given %></td>
         </tr>
         <% end %>
       </tbody>

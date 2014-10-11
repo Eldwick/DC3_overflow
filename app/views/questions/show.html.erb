@@ -1,7 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Back', questions_path %>
-
 <section id="question">
   <h2> <%= @question.subject %></h2>
   <p>Asked on <date> <%= @question.created_at %></date> by <%= @question.user.name %></p>
@@ -10,6 +6,9 @@
   <p>
   <%= @question.text %>
   </p>
+  <% @question.categories.each do |category|%>
+    <%= category.name %>
+  <% end %>
 </section>
 <section id="answers">
   <%= link_to 'Submit Answer', new_answer_path(q_id:@question.id)  %>

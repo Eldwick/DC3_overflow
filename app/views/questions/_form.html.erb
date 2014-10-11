@@ -12,14 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :subject %><br>
-    <%= f.text_field :subject %>
+    <%= f.text_field :subject, placeholder: 'Subject' %>
   </div>
 
   <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+    <%= f.text_area :text, cols:30, placeholder: 'Question'%>
   </div>
+
+  <ul>
+    <% @categories.each do |category| %>
+    <li><%= check_box_tag "question[category_ids][]", category.id%><%= f.label category.name %></li>
+    <% end %>
+  </ul>
   <div class="actions">
     <%= f.submit %>
   </div>

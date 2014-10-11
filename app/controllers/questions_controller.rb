@@ -13,11 +13,13 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @answers = Answer.where(question_id: @question.id).all
+    session[:q_id] = @question.id
   end
 
   # GET /questions/new
   def new
     @question = Question.new
+    @categories = Category.all
   end
 
   # GET /questions/1/edit
@@ -72,6 +74,8 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:text, :subject)
+      params[:question][:user_id] = session[:user_id].to_i
+
+      params.require(:question).permit(:text, :subject, :user_id, :category_ids => [])
     end
 end
