@@ -1,0 +1,24 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#filters {
+  display: inline-block;
+
+}
+
+#questions_list {
+  float: right;
+  width: 40%;
+  margin-right: 300px;
+}
+
+#question, #answers {
+  width: 70%;
+  margin: 40px auto;
+}
+
+.question_answer {
+  border: 3px solid black;
+  margin-bottom: 20px; 
+}

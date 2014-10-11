@@ -1,0 +1,72 @@
+  <%= @user_id %>
+
+<section id="whiteboard_pic">
+  Picture of the Day
+</section>
+
+<section id="search_create_question">
+  <form>
+    <input type="text" name='q_search' placeholder='Search Questions'>
+  </form>
+  <%= link_to 'Ask a Question', new_question_path %>
+</section>
+
+<div id="landing_main">
+  <section>
+    <h2>Categories</h2>
+
+    <table class='categories_landing'>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Test Category</td>
+          <td class='category_count'>4</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <section id="questions_landing">
+    <h2>Pending Questions</h2>
+    <%= link_to 'See All', questions_path(@questions) %>
+    <% @questions.each do |question| %>
+    <article class='category_list'>
+      <h3><%=question.subject %></h3>
+      <div class="karma">Karma: <%=question.karma %></div>
+      <hr>
+      <p class="quest"><%=question.text %></p>
+      <%= link_to 'See More', question %>
+    </article>
+    <% end %>
+  </section>
+  <section>
+    <h2>Users</h2>
+
+    <table class='users_landing'>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Questions</th>
+          <th>Answers</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td> <%= link_to user.name , user %> </td>
+          <td class='user_question_count'><%= [3,4,5,6,8,9,10].sample %></td>
+          <td class='user_answer_count'><%= [3,4,5,6,8,9,10].sample %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>
+
+<br>
