@@ -5,13 +5,13 @@
   <h2>Filers</h2>
   <h3>Status</h3>
   <ul>
-    <li><%= check_box_tag "status[]", 0, @filtered_status.include?("0") %> Pending</li>
-    <li><%= check_box_tag "status[]", 't', @filtered_status.include?("t") %> Answered</li>
+    <li><%= check_box_tag "status[]", 0, @status_filter.include?("0") %> Pending</li>
+    <li><%= check_box_tag "status[]", 't', @status_filter.include?("t") %> Answered</li>
   </ul>
   <h3>Category</h3>
   <ul>
     <% @categories.each do |category| %>
-    <li><%= check_box_tag "category_ids[]", category.id %> <%= category.name %> <%= category.questions.count %></li>
+    <li><%= check_box_tag "category_ids[]", category.id, @category_filer.include?(category.id.to_s) %> <%= category.name %> <%= category.questions.count %></li>
     <% end %>
   </ul>
   <h3>Author</h3>

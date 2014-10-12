@@ -4,7 +4,8 @@ class Question < ActiveRecord::Base
   scope :status, -> (status) { where status: status }
   scope :user_id, -> (user_id) { where user_id: user_id }
 
-  def self.category(category_ids)
-    categories = Category.where(id: category_ids)
-    where(categories: categories)
+  def self.category_filer(category_ids)
+    categories = Category.find(category_ids)
+    select{ |question| !(question.categories & categories).empty? }
+  end
 end

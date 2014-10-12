@@ -7,8 +7,10 @@ class QuestionsController < ApplicationController
     @questions = Question.all
     @questions = @questions.status(params[:status]) if params[:status].present?
     @questions = @questions.user_id(params[:user_ids]) if params[:user_ids].present?
-    @filtered_status = params[:status] || []
+    @questions = @questions.category_filer(params[:category_ids]) if params[:category_ids].present?
+    @status_filter = params[:status] || []
     @user_filer = params[:user_ids] || []
+    @category_filer = params[:category_ids] || []
     puts @user_filer.to_s
     @users = User.all
   end
