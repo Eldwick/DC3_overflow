@@ -34,7 +34,7 @@
 
   <section id="questions_landing">
     <h2>Pending Questions</h2>
-    <%= link_to 'See All', questions_path(@questions) %>
+    <%= link_to 'See All', questions_path %>
     <% @questions.each do |question| %>
     <article class='category_list'>
       <h3><%=question.subject %></h3>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "register" => "users#new", :as => "register"
+  get "search" => "questions#search", :as => "search"
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 

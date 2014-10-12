@@ -21,7 +21,7 @@
 
   <ul>
     <% @categories.each do |category| %>
-    <li><%= check_box_tag "question[category_ids][]", category.id%><%= f.label category.name %></li>
+    <li><%= check_box_tag "question[category_ids][]", category.id, @question.categories.include?(category) %> <%= category.name %></li>
     <% end %>
   </ul>
   <div class="actions">

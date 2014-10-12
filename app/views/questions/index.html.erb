@@ -1,19 +1,26 @@
 <div id="filters">
-  <%= link_to 'Ask a Question', new_question_path %>
-  <form>
-    <input type="text" name='q_search' placeholder='Search Questions'>
-  </form>
+  <%= form_tag(questions_path, method:"get") do %>
+  <%= submit_tag("Search") %>
+  <input type="text" name='q_search' placeholder='Search Questions'>
   <h2>Filers</h2>
   <h3>Status</h3>
-  <label>Pending</label><input type="checkbox">
-  <label>Answered</label><input type="checkbox">
+  <ul>
+    <li><%= check_box_tag "status[]", 0, @filtered_status.include?("0") %> Pending</li>
+    <li><%= check_box_tag "status[]", 't', @filtered_status.include?("t") %> Answered</li>
+  </ul>
   <h3>Category</h3>
-  <% @categories.each do |category| %>
-    <label><%= category.name %></label><input type="checkbox">
-  <%end%>
+  <ul>
+    <% @categories.each do |category| %>
+    <li><%= check_box_tag "category_ids[]", category.id %> <%= category.name %> <%= category.questions.count %></li>
+    <% end %>
+  </ul>
   <h3>Author</h3>
-  <% @users.each do |user| %>
-    <label><%= user.name %></label><input type="checkbox">
+  <ul>
+    <% @users.each do |user| %>
+    <li><%= check_box_tag "user_ids[]", user.id, @user_filer.include?(user.id.to_s)%> <%= user.name %> <%= user.questions_asked %></li>
+    <% end %>
+  </ul>
+  <%= submit_tag("Search") %>
   <%end%>
 </div>
 

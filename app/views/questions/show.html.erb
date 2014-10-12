@@ -9,6 +9,9 @@
   <% @question.categories.each do |category|%>
     <%= category.name %>
   <% end %>
+  <% if @user_id == @question.user_id %>
+    <%= link_to 'Edit Question', edit_question_path %>
+  <% end %>
 </section>
 <section id="answers">
   <%= link_to 'Submit Answer', new_answer_path(q_id:@question.id)  %>

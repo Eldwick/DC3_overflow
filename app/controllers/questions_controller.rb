@@ -1,11 +1,15 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_categories, only: [:index, :show, :edit, :update]
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
-    @categories = Category.all
+    @questions = @questions.status(params[:status]) if params[:status].present?
+    @questions = @questions.user_id(params[:user_ids]) if params[:user_ids].present?
+    @filtered_status = params[:status] || []
+    @user_filer = params[:user_ids] || []
+    puts @user_filer.to_s
     @users = User.all
   end
 
@@ -14,12 +18,12 @@ class QuestionsController < ApplicationController
   def show
     @answers = Answer.where(question_id: @question.id).all
     session[:q_id] = @question.id
+    @user_id = session[:user_id]
   end
 
   # GET /questions/new
   def new
     @question = Question.new
-    @categories = Category.all
   end
 
   # GET /questions/1/edit
@@ -70,6 +74,10 @@ class QuestionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
+    end
+
+    def get_categories
+      @categories = Category.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
