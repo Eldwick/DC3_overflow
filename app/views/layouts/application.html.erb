@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WDIOverflow</title>
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<header>
-  <nav>
-    <ul>
-      <a href="/"><h1>WDI-Overflow</h1></a>
-      <% if logged_in? %>
-        Logged in as <%= current_user.name %>.
-        <%= link_to "Log out", log_out_path %>
-      <% else %>  
-        <%= link_to 'Log in', log_in_path %>
-        <%= link_to 'Register', register_path %>
-      <% end %>
-    </ul>
-  </nav>
-</header>
-<%= yield %>
-
-</body>
+  <head>
+    <title>n-bigenate</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <div id="wrapper">
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="navbar-header">
+          <a href="/" class="navbar-brand"><h1>n-bigenate</h1></a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li>Logged in as <%= current_user.name %>.</li>
+              <li><%= link_to "Log out", log_out_path %></li>
+            <% else %>  
+              <li><%= link_to 'Log in', log_in_path %></li>
+              <li><%= link_to 'Register', register_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <%= yield %>
+  </div>
+  <footer>
+    n-bigenat<br>
+    For WDI DC#<br>
+    <a href='https://github.com/Eldwick'>James Jalandoni</a><br>
+  </footer>
+  </body>
 </html>

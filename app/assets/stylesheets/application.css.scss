@@ -1,0 +1,87 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+ 
+@font-face {
+  font-family: 'Marker';
+  src:font-url('Marker.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+  background: image-url('site-bkgd.jpg') repeat center;
+}
+
+#wrapper {
+  min-height: 100%;
+  height: auto;
+  padding: 0 0 80px;
+  margin: 0 auto -80px; 
+}
+
+h1, h2{
+  font-family: 'Marker';
+}
+
+h1 {
+  margin: 0;
+  font-size: 22px;
+}
+.navbar {
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0px;
+}
+.navbar-default .navbar-nav {
+  li{
+    a {
+    color: white;
+    }
+  }
+}
+.navbar-default {
+  background-color: rgba(42, 145, 116, 1); 
+  display: block;
+}
+
+.navbar-brand{
+  h1 {
+    color: white;
+  }
+}
+
+footer {
+  clear: both;
+  bottom: 0;
+  padding: 15px;
+  background-color: rgba(42, 145, 116, 1);
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  height: 80px;
+   a {
+    color:white;
+   }
+}

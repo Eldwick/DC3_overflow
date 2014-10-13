@@ -1,32 +1,55 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// // Place all the styles related to the welcome controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#whiteboard_pic, #search_create_question {
+// #whiteboard_pic, #search_create_question {
+//   margin: 0 auto;
+//   width: 90%;
+//   text-align: center;
+// }
+
+// #whiteboard_pic {
+//   height: 300
+//   background-color: grey;
+// }
+
+// #search_create_question {
+//   form, button {
+//     display: inline-block;
+//   }
+// }
+
+// #landing_main {
+//   margin: 0 auto;
+//   width: 90%;
+//   section {
+//     display: inline-block;
+//   }
+//   #questions_landing{
+//     margin: 0 250px;
+//     vertical-align: text-top;
+//   }
+// }
+// .item {
+//   background-color: grey;
+// }
+.carousel_img {
+  max-width: 40%;
+  max-height: 450px;
   margin: 0 auto;
-  width: 90%;
+}
+
+#banner_carousel {
+  background: image-url('whiteboard-puzzle.jpg') no-repeat;
+  background-size: cover;
+}
+
+#questions_landing {
   text-align: center;
 }
 
-#whiteboard_pic {
-  height: 300px;
-  background-color: grey;
-}
-
-#search_create_question {
-  form, button {
-    display: inline-block;
-  }
-}
-
 #landing_main {
-  margin: 0 auto;
-  width: 90%;
-  section {
-    display: inline-block;
-  }
-  #questions_landing{
-    margin: 0 250px;
-    vertical-align: text-top;
-  }
+  background: rgba(111, 167, 152, 0.1);
+  border-radius: 40px;
+  padding: 15px
 }

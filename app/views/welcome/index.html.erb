@@ -1,72 +1,110 @@
-<section id="whiteboard_pic">
-  Picture of the Day
-</section>
 
-<section id="search_create_question">
-  <form>
-    <input type="text" name='q_search' placeholder='Search Questions'>
-  </form>
-  <%= link_to 'Ask a Question', new_question_path %>
-</section>
+<div id="banner_carousel" class="carousel slide row" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+  </ol>
 
-<div id="landing_main">
-  <section>
-    <h2>Categories</h2>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item">
+      <%= image_tag "story_time_with_uncle_jeff.png", class: "carousel_img" %>
+      <div class="carousel-caption">
+        It's story time with Uncle Jeff!
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "first_day_poster1.png", class: "carousel_img" %>
+      <div class="carousel-caption">
+        First day success poster!
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "first_day_poster2.png", class: "carousel_img" %>
+      <div class="carousel-caption">
+        Another first day success poster!
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "instructors.png", class: "carousel_img" %>
+      <div class="carousel-caption">
+        Instructors in marker.
+      </div>
+    </div>
+    <div class="item active">
+      <%= image_tag "batman.png", class: "carousel_img" %>
+      <div class="carousel-caption">
+        BATMAN!
+      </div>
+    </div>
+  </div>
 
-    <table class='categories_landing'>
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Count</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @categories.each do |category|%>
-        <tr>
-          <td><%= category.name %></td>
-          <td class='category_count'><%= category.questions.length %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </section>
-
-  <section id="questions_landing">
-    <h2>Pending Questions</h2>
-    <%= link_to 'See All', questions_path %>
-    <% @questions.each do |question| %>
-    <article class='category_list'>
-      <h3><%=question.subject %></h3>
-      <div class="karma">Karma: <%=question.karma %></div>
-      <hr>
-      <p class="quest"><%=question.text %></p>
-      <%= link_to 'See More', question %>
-    </article>
-    <% end %>
-  </section>
-  <section>
-    <h2>Users</h2>
-
-    <table class='users_landing'>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Questions</th>
-          <th>Answers</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-          <td> <%= link_to user.name , user %> </td>
-          <td class='user_question_count'><%= user.questions_asked %></td>
-          <td class='user_answer_count'><%=  user.answers_given %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </section>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#banner_carousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#banner_carousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>
 
-<br>
+
+<div class='container'>
+  <section id="search_create_question" class='row'>
+    <form class='col-md-3 col-md-offset-3'>
+      <input type="text" name='q_search' placeholder='Search Questions'>
+    </form>
+    <%= link_to 'Ask a Question', new_question_path, html_options = {class: 'col-md-3'}%>
+  </section>
+
+
+  <div id="landing_main" class='row'>
+
+    <section id='categories_landing' class='landing_col col-md-3'>
+      <h2>Categories</h2>
+      <table class='table table-hover'>
+        <tbody>
+          <% @categories.each do |category|%>
+          <tr>
+            <td><%= category.name %></td>
+            <td class='category_count'><%= category.questions.length %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="questions_landing" class='landing_col col-md-6'>
+      <h2>Questions</h2>
+      <%= link_to 'See All', questions_path %>
+      <% @questions.each do |question| %>
+      <article class='category_list'>
+        <h3><%=question.subject %></h3>
+        <div class="karma">Karma: <%=question.karma %></div>
+        <hr>
+        <p class="quest"><%=question.text %></p>
+        <%= link_to 'See More', question %>
+      </article>
+      <% end %>
+    </section>
+
+    <section id='users_landing' class='landing_col col-md-3'>
+      <h2>Users</h2>
+      <table class='table table-hover'>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td> <%= link_to user.name , user %> </td>
+            <td class='user_question_count'><%= user.questions_asked %> ?</td>
+            <td class='user_answer_count'><%=  user.answers_given %> !</td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
