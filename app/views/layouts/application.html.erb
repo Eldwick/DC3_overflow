@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'icon.png' %>
   </head>
   <body>
   <div id="wrapper">
@@ -29,9 +30,12 @@
     <%= yield %>
   </div>
   <footer>
-    n-bigenat<br>
-    For WDI DC#<br>
-    <a href='https://github.com/Eldwick'>James Jalandoni</a><br>
+    <a href="/"><%= image_tag "icon_inverse.png", id: "footer_icon" %></a>
+    <span class="footer_text">
+      <a href='/'>n-bigenat</a><br>
+      for WDI DC#3<br>
+      <a href='https://github.com/Eldwick'>created by: james jalandoni</a><br>
+    </span>
   </footer>
   </body>
 </html>

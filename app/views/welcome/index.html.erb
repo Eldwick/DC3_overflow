@@ -11,10 +11,10 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
-    <div class="item">
-      <%= image_tag "story_time_with_uncle_jeff.png", class: "carousel_img" %>
+    <div class="item active">
+      <%= image_tag "wdi3_circle.png", class: "carousel_img" %>
       <div class="carousel-caption">
-        It's story time with Uncle Jeff!
+        <h2>n-bigenate your mind!</h2>
       </div>
     </div>
     <div class="item">
@@ -35,7 +35,7 @@
         Instructors in marker.
       </div>
     </div>
-    <div class="item active">
+    <div class="item">
       <%= image_tag "batman.png", class: "carousel_img" %>
       <div class="carousel-caption">
         BATMAN!
@@ -55,10 +55,10 @@
 
 <div class='container'>
   <section id="search_create_question" class='row'>
-    <form class='col-md-3 col-md-offset-3'>
-      <input type="text" name='q_search' placeholder='Search Questions'>
+    <%= link_to 'Ask a Question', new_question_path, html_options = {class: 'col-md-offset-3 col-md-3 btn btn-warning search_create_element', id:'ask_question'}%>
+    <form>
+      <input class='col-md-3 search_create_element' type="text" id='q_search_landing' name='q_search' placeholder='Search Questions'>
     </form>
-    <%= link_to 'Ask a Question', new_question_path, html_options = {class: 'col-md-3'}%>
   </section>
 
 
@@ -66,10 +66,10 @@
 
     <section id='categories_landing' class='landing_col col-md-3'>
       <h2>Categories</h2>
-      <table class='table table-hover'>
+      <table class='table'>
         <tbody>
           <% @categories.each do |category|%>
-          <tr>
+          <tr class='category_row' href="/categories/<%= category.id %>">
             <td><%= category.name %></td>
             <td class='category_count'><%= category.questions.length %></td>
           </tr>
@@ -82,11 +82,10 @@
       <h2>Questions</h2>
       <%= link_to 'See All', questions_path %>
       <% @questions.each do |question| %>
-      <article class='category_list'>
+      <article class='category_list' href="/questions/<%= question.id %>">
         <h3><%=question.subject %></h3>
-        <div class="karma">Karma: <%=question.karma %></div>
-        <hr>
-        <p class="quest"><%=question.text %></p>
+        <p class="author">asked by <%=question.user.name %></p>
+        <p class="question_text"><%=question.text %></p>
         <%= link_to 'See More', question %>
       </article>
       <% end %>
@@ -94,14 +93,14 @@
 
     <section id='users_landing' class='landing_col col-md-3'>
       <h2>Users</h2>
-      <table class='table table-hover'>
+      <table class='table'>
         <tbody>
           <% @users.each do |user| %>
-          <tr>
-            <td> <%= link_to user.name , user %> </td>
-            <td class='user_question_count'><%= user.questions_asked %> ?</td>
-            <td class='user_answer_count'><%=  user.answers_given %> !</td>
-          </tr>
+              <tr class='user_row' href="/users/<%= user.id %>">
+                <td><%= user.name%></td>
+                <td class='user_question_count'><%= user.questions_asked %> ?</td>
+                <td class='user_answer_count'><%=  user.answers_given %> !</td>
+              </tr>
           <% end %>
         </tbody>
       </table>

@@ -5,15 +5,11 @@ class SessionsController < ApplicationController
 
   def create
     user = User.authenticate(params[:email], params[:password])
-    puts params[:email]
 
     if user
-      puts "passed"
       session[:user_id] = user.id
-      redirect_to "/", :notice => "Signed up!"
+      redirect_to "/"
     else
-      puts "failed"
-      session[:user_id] = "failed"
       flash.now.alert = "Invalid email or password"
       render "new"
     end

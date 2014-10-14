@@ -3,9 +3,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
   scope :status, -> (status) { where status: status }
   scope :user_id, -> (user_id) { where user_id: user_id }
+  scope :in_category, -> (category_id) { joins(:categories).where('categories.id = ?', category_id)}  
+  
 
-  def self.category_filer(category_ids)
-    categories = Category.find(category_ids)
-    select{ |question| !(question.categories & categories).empty? }
-  end
 end

@@ -15,3 +15,15 @@
 //= require turbolinks
 //= require_tree 
 //= require bootstrap-sprockets
+var ready;
+ready = function() {
+  $(".user_row, .category_row, .category_list").click(function() {
+        window.document.location = $(this).attr("href");
+  });
+  $('.checkbox_filter').click(function() {
+      $('#filter_form').submit();
+  });
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

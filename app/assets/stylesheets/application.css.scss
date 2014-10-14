@@ -31,14 +31,14 @@ body {
 }
 
 body {
-  background: image-url('site-bkgd.jpg') repeat center;
+  background: image-url('paper-bkg.jpg') repeat center;
 }
 
 #wrapper {
   min-height: 100%;
   height: auto;
-  padding: 0 0 80px;
-  margin: 0 auto -80px; 
+  padding: 0 0 60px;
+  margin: 0 auto -60px; 
 }
 
 h1, h2{
@@ -60,6 +60,9 @@ h1 {
     color: white;
     }
   }
+  :hover {
+    background-color: rgba(42, 0, 116, .3);
+  }
 }
 .navbar-default {
   background-color: rgba(42, 145, 116, 1); 
@@ -75,13 +78,22 @@ h1 {
 footer {
   clear: both;
   bottom: 0;
-  padding: 15px;
+  padding: 5px;
   background-color: rgba(42, 145, 116, 1);
-  text-align: center;
   color: white;
-  font-size: 12px;
-  height: 80px;
+  font-size: 11px;
+  height: 60px;
    a {
     color:white;
    }
+}
+
+#footer_icon {
+  float: left;
+  margin: 8px 25px 8px 10px;
+}
+
+.footer_text {
+  display: block; 
+  margin-top: 2px;
 }

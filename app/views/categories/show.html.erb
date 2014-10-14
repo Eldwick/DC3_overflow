@@ -5,10 +5,14 @@
   <%= @category.name %>
 </p>
 
+<% @category.questions.each do |question| %>
 <p>
-  <strong>Assignment:</strong>
-  <%= @category.assignment %>
+  <strong><%= question.subject %></strong><br>
+  <%= question.text %><br>
+  asked by <%= question.user.name %><br>
+  <% question.categories.each do |category|%>
+    <%= category.name %>
+  <% end %>
 </p>
+<% end %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>

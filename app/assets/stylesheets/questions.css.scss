@@ -2,28 +2,71 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// #filters {
+//   display: inline-block;
+
+// }
+
+// #questions_list {
+//   float: right;
+//   width: 40%;
+//   margin-right: 300px;
+// }
+
+// #question, #answers {
+//   width: 70%;
+//   margin: 40px auto;
+// }
+
+// .question_answer {
+//   border: 3px solid black;
+//   margin-bottom: 20px; 
+// }
+
+// textarea {
+//     width: 40em;
+//     height: 10em;
+// }
+.questions_index {
+  background: rgba(111, 167, 152, 0.1);
+  border:  20px solid rgba(111, 167, 152, 0.0);
+  border-bottom: 0;
+}
+#filters, #questions_list {
+  background: rgba(111, 167, 152, 0.3);
+}
+
+#questions_list{
+  border-top-right-radius: 40px;
+  min-height: 723px;
+  h2 {
+    font-size: 16px;
+  }
+  h4 {
+    margin-top: 40px;
+  }
+  float: left
+}
 #filters {
-  display: inline-block;
-
+  border-right: 3px dashed #fff;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  padding-bottom: 10px;
+  ul {
+    padding: 0;
+  }
+  li {
+    list-style-type: none;
+  }
 }
 
-#questions_list {
-  float: right;
-  width: 40%;
-  margin-right: 300px;
+.questions_index {
+  h2 {
+    color: #eea236;
+  }
 }
 
-#question, #answers {
-  width: 70%;
-  margin: 40px auto;
-}
-
-.question_answer {
-  border: 3px solid black;
-  margin-bottom: 20px; 
-}
-
-textarea {
-    width: 40em;
-    height: 10em;
+.result_count {
+  font-style: italic;
+  font-size: 12px;
 }

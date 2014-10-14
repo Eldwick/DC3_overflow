@@ -7,12 +7,18 @@ class QuestionsController < ApplicationController
     @questions = Question.all
     @questions = @questions.status(params[:status]) if params[:status].present?
     @questions = @questions.user_id(params[:user_ids]) if params[:user_ids].present?
-    @questions = @questions.category_filer(params[:category_ids]) if params[:category_ids].present?
+    @questions = @questions.in_category(params[:category_ids]) if params[:category_ids].present?
     @status_filter = params[:status] || []
     @user_filer = params[:user_ids] || []
     @category_filer = params[:category_ids] || []
-    puts @user_filer.to_s
     @users = User.all
+    
+    filters_string = all_filters_string
+    puts '------'
+    puts filters_string
+    puts '------'
+
+    @filters = filters_string == "" ? "All Questions" : filters_string
   end
 
   # GET /questions/1
@@ -73,6 +79,27 @@ class QuestionsController < ApplicationController
   end
 
   private
+    def all_filters_string
+      status_string = params[:status].present? ? status_filter_string(params[:status]) + " -> " : ""
+      category_string = params[:category_ids].present? ? "In: " + category_filter_string(params[:category_ids]) + " -> " : ""
+      user_string = params[:user_ids].present? ? "By: " + user_filter_string(params[:user_ids]) + " -> " : ""
+      status_string + category_string + user_string
+    end
+
+    def status_filter_string(statuses)
+      status_filter_array = statuses.map {|status| status == 't' ? "Answered" : "Pending"}
+      status_filter_string = status_filter_array.join(" or ")
+    end
+
+    def category_filter_string(category_ids)
+      category_filter_array = category_ids.map {|id|  @categories.where(id: id).first.name}
+      category_filter_string = category_filter_array.join(" or ")
+    end
+
+    def user_filter_string(user_ids)
+      user_filter_array = user_ids.map {|id|  @users.where(id: id).first.name}
+      user_filter_string = user_filter_array.join(" or ")
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
@@ -87,5 +114,13 @@ class QuestionsController < ApplicationController
       params[:question][:user_id] = session[:user_id].to_i
 
       params.require(:question).permit(:text, :subject, :user_id, :category_ids => [])
+    end
+
+    def ending_count(questions)
+      questions.select{ |question| question.status == false }.length
+    end
+
+    def answered_count(questions)
+      questions.select{ |question| question.status == true }.length
     end
 end
