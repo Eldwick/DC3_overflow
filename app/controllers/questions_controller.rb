@@ -25,6 +25,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @answers = Answer.where(question_id: @question.id).all
+    @answer = Answer.new
     session[:q_id] = @question.id
     @user_id = session[:user_id]
   end
@@ -78,6 +79,11 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def time_format(dbTime)
+      time = Time.at(dbTime)
+      time.to_formatted_s(:long)
+  end
+
   private
     def all_filters_string
       status_string = params[:status].present? ? status_filter_string(params[:status]) + " -> " : ""
@@ -114,13 +120,5 @@ class QuestionsController < ApplicationController
       params[:question][:user_id] = session[:user_id].to_i
 
       params.require(:question).permit(:text, :subject, :user_id, :category_ids => [])
-    end
-
-    def ending_count(questions)
-      questions.select{ |question| question.status == false }.length
-    end
-
-    def answered_count(questions)
-      questions.select{ |question| question.status == true }.length
     end
 end

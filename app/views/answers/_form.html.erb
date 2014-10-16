@@ -11,9 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
+  <div class="field form-group">
+    <%= f.text_area :text, :placeholder =>  "Answer", class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>

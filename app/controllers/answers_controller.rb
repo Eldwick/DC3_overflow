@@ -71,7 +71,6 @@ class AnswersController < ApplicationController
     def answer_params
       params[:answer][:question_id] = session[:q_id]
       params[:answer][:user_id] = session[:user_id].to_i
-      params.require(:answer).permit(:text, :question_id, :user_id)
-      
+      params.require(:answer).permit(:text, :question_id, :user_id)      
     end
 end
