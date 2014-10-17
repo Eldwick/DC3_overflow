@@ -57,9 +57,18 @@
 #new_answer {
   padding: 15px;
 }
+
 .question_new {
   li {
     display: inline;
+  }
+}
+
+.question_show {
+  .author{
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
   }
 }
 .questions_index, .question_show, .question_new {

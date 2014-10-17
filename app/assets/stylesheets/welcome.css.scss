@@ -5,15 +5,20 @@
   text-align: left;
   padding: 5px 20px;
   border-top: 3px dashed #fff;
-  .author{
-    text-align: right;
-  }
 }
 
 #questions_landing {
   background: rgba(111, 167, 152, 0.3);
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   h2 {
     color: #eea236;
+  }
+  .author{
+    text-align: right;
+    font-size: 12px;
+    font-style: italic;
   }
 }
 .carousel_img {
@@ -26,12 +31,6 @@
   max-width: 100%;
   background-size: cover;
   margin-left: 0;
-}
-
-#questions_landing {
-  text-align: center;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
 
 #landing_main {

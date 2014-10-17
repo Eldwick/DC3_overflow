@@ -11,23 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="field form-group">
+    <%= f.text_field :name, :placeholder =>  "Name", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="field form-group">
+    <%= f.text_field :email, :placeholder =>  "Email", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+  <div class="field form-group">
+    <%= f.password_field :password, :placeholder =>  "Password", class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+  <div class="field form-group">
+    <%= f.password_field :password_confirmation, :placeholder =>  "Password Confirmation", class: 'form-control'%>
   </div>
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit class: 'btn btn-warning'  %>
   </div>
 <% end %>

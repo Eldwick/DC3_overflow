@@ -1,3 +1,25 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.user_show{
+ background: rgba(111, 167, 152, 0.1);
+  border:  20px solid rgba(111, 167, 152, 0.0);
+  border-bottom: 0;
+  text-align: center;
+  h1, h2 {
+    color: #eea236;
+    }
+  ul {
+    padding: 0;
+    list-style-type: none;
+  }
+  min-height: 730px;
+}

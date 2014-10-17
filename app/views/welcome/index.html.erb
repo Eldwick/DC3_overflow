@@ -83,9 +83,9 @@
       <% @questions.each do |question| %>
       <article class='category_list' href="/questions/<%= question.id %>">
         <h3><%=question.subject %></h3>
-        <p class="author">asked by <%=question.user.name %></p>
         <p class="question_text"><%=question.text %></p>
-        <%= link_to 'See More', question %>
+        <%= link_to 'See Answers', question %>
+        <div class="author">asked by <%=question.user.name %> <%=time_ago_in_words(question.time_format) %> ago.</div>
       </article>
       <% end %>
     </section>
