@@ -11,17 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :subject, placeholder: 'Subject' %>
+  <div class="field form-group">
+    <%= f.text_field :subject, placeholder: 'Subject', class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.text_area :text, cols:30, placeholder: 'Question'%>
+  <div class="field form-group md-panel">
+    <div id='wmd-button-bar'></div>
+    <%= f.text_area :text, cols:30, placeholder: 'Question', class: 'form-control  wmd-input'%>
   </div>
 
   <ul>
     <% @categories.each do |category| %>
-    <li><%= check_box_tag "question[category_ids][]", category.id, @question.categories.include?(category) %> <%= category.name %></li>
+    <li><%= check_box_tag "question[category_ids][]", category.id, @question.categories.include?(category) %>  <%= label_tag category.id, category.name %></li>
     <% end %>
   </ul>
   <div class="actions">

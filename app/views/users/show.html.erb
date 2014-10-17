@@ -1,9 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="container user_show">
+<h1><%= @user.name %></h1>
 
 <p>
   <strong>Email:</strong>
@@ -14,6 +10,4 @@
   <strong>Karma:</strong>
   <%= @user.karma %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>

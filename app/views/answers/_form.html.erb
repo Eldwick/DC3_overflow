@@ -11,8 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.text_area :text, :placeholder =>  "Answer", class: 'form-control' %>
+  <div class="field form-group wmd-panel">
+      <div id='wmd-button-bar'></div>
+    <%= f.text_area :text, :placeholder =>  "Answer", class: 'form-control wmd-input' %>
   </div>
   <div class="actions">
     <%= f.submit %>

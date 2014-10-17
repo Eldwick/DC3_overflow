@@ -1,18 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @category.name %>
-</p>
-
-<% @category.questions.each do |question| %>
-<p>
-  <strong><%= question.subject %></strong><br>
-  <%= question.text %><br>
-  asked by <%= question.user.name %><br>
-  <% question.categories.each do |category|%>
-    <%= category.name %>
+<div class="container category_show">
+  <h1> <%= @category.name %> </h1>
+  <h4>Number of questions: <%= @category.questions.count %></h4>
+  <% @category.questions.each do |question| %>
+  <article>
+    <hr>
+    <h3><%=question.subject %></h3>
+    <div class="karma">Karma: <%=question.karma %></div>
+    <p>Asked by <%=question.user.name%> on <%=question.created_at%></p>
+    <p class="quest"><%=question.text %></p>
+    <%= link_to 'See More', question %>
+  </article>
   <% end %>
-</p>
-<% end %>
-
+</div>

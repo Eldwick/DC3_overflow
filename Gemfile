@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'pagedown-rails', '~> 1.1.3'
 
+gem 'kramdown'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 gem 'pg'

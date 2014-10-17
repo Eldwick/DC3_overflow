@@ -15,6 +15,9 @@
 //= require turbolinks
 //= require_tree 
 //= require bootstrap-sprockets
+//= require markdown.converter
+//= require markdown.sanitizer
+//= require markdown.editor
 var ready;
 ready = function() {
   $(".user_row, .category_row, .category_list").click(function() {
@@ -23,6 +26,9 @@ ready = function() {
   $('.checkbox_filter').click(function() {
       $('#filter_form').submit();
   });
+  var converter = Markdown.getSanitizingConverter();
+  var editor = new Markdown.Editor(converter);
+  editor.run();
 };
 
 $(document).ready(ready);

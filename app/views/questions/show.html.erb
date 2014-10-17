@@ -5,7 +5,7 @@
     <strong>Karma:</strong>
     <%= @question.karma %>
     <p>
-    <%= @question.text.html_safe %>
+    <%= markdown_filter @question.text %>
     </p>
     <% @question.categories.each do |category|%>
       <%= category.name %>
@@ -21,7 +21,7 @@
       <div class="question_answer">
         <div class="answer_date"><%=answer.time_format%></div>
         <div class="answer_author"><%=answer.user.name%></div>
-        <p><%=simple_format(answer.text).html_safe%></p>
+        <p><%= markdown_filter answer.text %></p>
         
       </div>
     <% end %>

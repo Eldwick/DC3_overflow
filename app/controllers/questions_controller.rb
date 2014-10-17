@@ -14,9 +14,6 @@ class QuestionsController < ApplicationController
     @users = User.all
     
     filters_string = all_filters_string
-    puts '------'
-    puts filters_string
-    puts '------'
 
     @filters = filters_string == "" ? "All Questions" : filters_string
   end
@@ -79,9 +76,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def time_format(dbTime)
-      time = Time.at(dbTime)
-      time.to_formatted_s(:long)
+  def markdown(text)
+    options = [:hard_wrap, :filter_html, :autolink, :no_intraemphasis, :fenced_code, :gh_blockcode]
+    syntax_highlighter(Redcarpet.new(text, *options).to_html).html_safe
   end
 
   private
