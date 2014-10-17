@@ -66,7 +66,7 @@ class AnswersController < ApplicationController
     def set_answer
       @answer = Answer.find(params[:id])
     end
-
+    
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
       params[:answer][:question_id] = session[:q_id]

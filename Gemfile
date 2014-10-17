@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 gem 'rails_12factor', group: :production
 gem 'pagedown-rails', '~> 1.1.3'
+gem 'hipchat'
 
 gem 'kramdown'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

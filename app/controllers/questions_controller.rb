@@ -46,9 +46,11 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-
     respond_to do |format|
       if @question.save
+        user = User.find(session[:user_id])
+        client = HipChat::Client.new('4e9f38bc09830a798a3e091c13fa20')
+        client[846262].send(user.name, format_question_hipchat(@question), :notify => true)
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
@@ -123,6 +125,9 @@ class QuestionsController < ApplicationController
       @categories = Category.all
     end
 
+    def format_question_hipchat(question)
+      "<a href='http://localhost:3000/questions/"+question.id.to_s+"'><b>" +question.subject+"</b></a><br>"  +question.text
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params[:question][:user_id] = session[:user_id].to_i
