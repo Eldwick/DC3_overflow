@@ -126,7 +126,7 @@ class QuestionsController < ApplicationController
     end
 
     def format_question_hipchat(question)
-      "<a href='http://localhost:3000/questions/"+question.id.to_s+"'><b>" +question.subject+"</b></a><br>"  +question.text
+      "<a href='http://vast-plateau-7218.herokuapp.com/questions/"+question.id.to_s+"'><b>" +question.subject+"</b></a><br>"  +question.text
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
