@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
     @questions = @questions.status(params[:status]) if params[:status].present?
     @questions = @questions.user_id(params[:user_ids]) if params[:user_ids].present?
     @questions = @questions.in_category(params[:category_ids]) if params[:category_ids].present?
+    @questions = @questions.search(params[:search]) if params[:search].present?
     @status_filter = params[:status] || []
     @user_filer = params[:user_ids] || []
     @category_filer = params[:category_ids] || []
@@ -29,7 +30,12 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
+    if !(session[:user_id])
+      @user = User.new
+      render 'users/new'
+    else
+      @question = Question.new
+    end
   end
 
   # GET /questions/1/edit
@@ -83,10 +89,15 @@ class QuestionsController < ApplicationController
 
   private
     def all_filters_string
+      search_string = params[:search].present? ? search_filter_string + " -> " : ""
       status_string = params[:status].present? ? status_filter_string(params[:status]) + " -> " : ""
       category_string = params[:category_ids].present? ? "In: " + category_filter_string(params[:category_ids]) + " -> " : ""
       user_string = params[:user_ids].present? ? "By: " + user_filter_string(params[:user_ids]) + " -> " : ""
-      status_string + category_string + user_string
+      search_string + status_string + category_string + user_string
+    end
+
+    def search_filter_string
+      "'#{params[:search]}'"
     end
 
     def status_filter_string(statuses)
@@ -116,6 +127,6 @@ class QuestionsController < ApplicationController
     def question_params
       params[:question][:user_id] = session[:user_id].to_i
 
-      params.require(:question).permit(:text, :subject, :user_id, :category_ids => [])
+      params.require(:question).permit(:text, :subject, :user_id, :search, :category_ids => [])
     end
 end

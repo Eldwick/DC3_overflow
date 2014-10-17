@@ -16,7 +16,9 @@
   </section>
   <section id="answers">
     <h2>Answers</h2>
-    <%= render "answers/form" %>
+    <% if session[:user_id] %>
+      <%= render "answers/form" %>
+    <% end %>
     <% @answers.each do |answer|%>
       <div class="question_answer">
         <div class="answer_date"><%=answer.time_format%></div>

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def self.authenticate(email, password)
-    SessionsController.new.create
+    user = User.where(email:email).first
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else

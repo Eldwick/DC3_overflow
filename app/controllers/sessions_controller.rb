@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    @id = session[:user_id]
   end
 
   def create
@@ -19,4 +18,11 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_url
   end
+
+  private
+
+  def session_params
+      puts params[:email]
+      params.require(:session).permit(:email, :password)
+    end
 end

@@ -28,7 +28,12 @@
 //     height: 10em;
 // }
 
-
+#questions_landing {
+  padding: 25px 0px;
+  .h2 {
+    color: #eea236; 
+  }
+}
 .question_answer{
   border-bottom:  2px groove rgba(111, 167, 152, 0.3);
   background: rgba(111, 167, 152, 0.1);
@@ -98,8 +103,11 @@
   padding-bottom: 10px;
 }
 
-
 .result_count {
   font-style: italic;
   font-size: 12px;
+}
+
+#search-form{
+  font-size: 18px;
 }

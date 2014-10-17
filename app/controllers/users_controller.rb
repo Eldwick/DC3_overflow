@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   
+  def login
+    user = User.authenticate(params[:email], params[:password])
+
+    if user
+      session[:user_id] = user.id
+      redirect_to "/"
+    else
+      flash.now.alert = "Invalid email or password"
+      render "new"
+    end
+  end
   # GET /users
   # GET /users.json
   def index

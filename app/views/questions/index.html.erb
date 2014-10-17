@@ -5,7 +5,7 @@
       <%= form_tag(questions_path, method:"get", id: 'filter_form',) do %>
         <h2>Filers</h2>
         <h3>Subject</h3>
-        <input type="text" name='q_search' placeholder='Search Questions'>
+         <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
         <h3>Status</h3>
         <ul>
           <li><%= check_box_tag "status[]", 0, @status_filter.include?("0"), { id:"status_pending", class: "checkbox_filter" } %> <%= label_tag "status_pending", 'Pending ' + @questions.where(status:false).count.to_s %></li>
