@@ -31,7 +31,6 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     if !(session[:user_id])
-      puts "HIHIHIHI"
       @user = User.new
       redirect_to new_user_path
     else
@@ -51,7 +50,7 @@ class QuestionsController < ApplicationController
       if @question.save
         user = User.find(session[:user_id])
         client = HipChat::Client.new('4e9f38bc09830a798a3e091c13fa20')
-        client[846262].send(user.name, format_question_hipchat(@question), :notify => true)
+        client[808429].send(user.name, format_question_hipchat(@question), :notify => true)
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
