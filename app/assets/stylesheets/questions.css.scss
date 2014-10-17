@@ -28,6 +28,7 @@
 //     height: 10em;
 // }
 
+
 #questions_landing {
   padding: 25px 0px;
   .h2 {
@@ -84,7 +85,11 @@
   }
   min-height: 730px;
 }
-
+.question_cats {
+  text-align: left;
+  font-size: 12px;
+  font-style: italic;
+}
 #question{
   background: rgba(111, 167, 152, 0.3);
   padding: 15px;
