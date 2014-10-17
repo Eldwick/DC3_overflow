@@ -31,8 +31,9 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   def new
     if !(session[:user_id])
+      puts "HIHIHIHI"
       @user = User.new
-      render 'users/new'
+      redirect_to new_user_path
     else
       @question = Question.new
     end
